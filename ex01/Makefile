@@ -3,7 +3,7 @@ NAME = megaphone
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp phonebook.cpp setters.cpp getters.cpp
+SRC = main.cpp phonebook.cpp setters.cpp getters.cpp contact.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
