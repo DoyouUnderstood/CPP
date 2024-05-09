@@ -4,16 +4,21 @@
 #include <string>
 #include <iostream>
 #include "contact.hpp"
+#include <limits>
 
-class Phonebook {
+#define INT_MAX 2147483647
+
+class Phonebook 
+{
+private:
+    Contact contacts[8];
+    int currentContactCount;
+
 public:
     Phonebook();
     ~Phonebook();
-    void addContact(const Contact& contact);
-    bool is_valid(int index) const;
-
-private:
-    Contact repertoire[8];
+    void addContact();
+    void searchContacts() const;
 };
 
 #endif

@@ -17,7 +17,7 @@ void Contact::setName(std::string name)
     _name = name;
 }
 
-void Contact::setLastname(std::string lastname)
+void Contact::setLastName(std::string lastname)
 {
     _lastName = lastname;
 }
