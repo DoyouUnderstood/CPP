@@ -11,8 +11,8 @@ int main(int argc, char* argv[]) {
     std::string s1 = argv[2];
     std::string s2 = argv[3];
 
-    if (s1.empty()) {
-        std::cerr << "Error: s1 cannot be an empty string." << std::endl;
+    if (s1.empty() || s2.empty() || filename.empty()) {
+        std::cerr << "Error: parameters cannot be an empty string brother, try again." << std::endl;
         return 1;
     }
 

@@ -12,7 +12,6 @@ bool SedReplace::replace() {
         std::cerr << "Error: could not read file " << filename << std::endl;
         return false;
     }
-
     std::string replacedContent = replaceOccurrences(content);
     writeFile(replacedContent);
     return true;
@@ -47,7 +46,8 @@ std::string SedReplace::replaceOccurrences(const std::string& content) const {
     size_t pos = 0;
     size_t startPos = 0;
 
-    while ((pos = content.find(s1, startPos)) != std::string::npos) {
+    while ((pos = content.find(s1, startPos)) != std::string::npos) 
+    {
         result += content.substr(startPos, pos - startPos);
         result += s2;
         startPos = pos + s1.length();
