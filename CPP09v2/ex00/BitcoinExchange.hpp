@@ -7,53 +7,36 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
-#include <stdexcept>
 
 class BitcoinExchange {
 private:
-    std::map<std::string, float> _database;
-
-    // Date validation helpers
-    bool isValidDate(const std::string& date) const;
-    bool isValidDateFormat(const std::string& date) const;
-    bool isLeapYear(int year) const;
-    int getDaysInMonth(int year, int month) const;
-    bool isValidDateValues(int year, int month, int day) const;
-    
-    // Value validation helpers
-    bool isValidValue(const float value) const;
-    bool parseValue(const std::string& str, float& value) const;
-    
-    // Database helpers
-    std::string findClosestDate(const std::string& date) const;
-    bool parseDatabaseLine(const std::string& line, std::string& date, float& value) const;
-    bool parseInputLine(const std::string& line, std::string& date, float& value) const;
+    std::map<std::string, double>  _btcDatabase;
+    double findClosestRate(const std::string &date) const;
+    void processExchange(const std::string &date, const double value) const;
+    void parseLine(const std::string &line) const;
 
 public:
+    class Error : public std::exception {
+        private:
+            std::string _msg;
+        public:
+            Error(const std::string& msg) : _msg(msg) {}
+            virtual const char* what() const throw() { return _msg.c_str(); }
+            virtual ~Error() throw() {}
+    };
+
     BitcoinExchange();
-    BitcoinExchange(const BitcoinExchange& other);
     ~BitcoinExchange();
-    BitcoinExchange& operator=(const BitcoinExchange& other);
-
-    void loadDatabase(const std::string& filename);
-    void processInput(const std::string& filename);
-    float getExchangeRate(const std::string& date) const;
-
-    // Exception classes
-    class FileError : public std::runtime_error {
-        public:
-            FileError(const std::string& msg) : std::runtime_error(msg) {}
-    };
     
-    class DateError : public std::runtime_error {
-        public:
-            DateError(const std::string& msg) : std::runtime_error(msg) {}
-    };
+    // Étape 1: Charger la base de données
+    void loadDatabase(const std::string &filename);
     
-    class ValueError : public std::runtime_error {
-        public:
-            ValueError(const std::string& msg) : std::runtime_error(msg) {}
-    };
+    // Étape 2: Traiter le fichier d'entrée
+    void processInput(const std::string &filename);
+    
+    // Fonctions de validation
+    void isValidDate(std::string &date) const;
+    void isValidValue(const double value) const;
 };
 
 #endif
