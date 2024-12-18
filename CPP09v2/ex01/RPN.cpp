@@ -18,7 +18,8 @@ bool RPN::isOperator(const std::string& token) const {
 }
 
 bool RPN::isNumber(const std::string& token) const {
-    if (token.empty() || token.length() > 1) return false;
+    if (token.empty() || token.length() > 1) 
+        return false;
     return token[0] >= '0' && token[0] <= '9';
 }
 

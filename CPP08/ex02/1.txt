@@ -1,0 +1,35 @@
+1. Réseaux et Scanning
+
+    Q1 : Quelles sont les différences entre un scan TCP connect() (scan complet) et un scan SYN (scan furtif) dans Nmap ? Pourquoi utiliseriez-vous l'un plutôt que l'autre ?
+    Q2 : Comment détecter et énumérer les services exposés sur un réseau distant ? Quels outils utiliseriez-vous et comment interpréteriez-vous les résultats ?
+
+2. Exploitation de Vulnérabilités
+
+    Q3 : Pouvez-vous expliquer comment fonctionne une attaque par buffer overflow basique ? Quelle est la méthodologie pour identifier et exploiter une telle vulnérabilité sur un binaire vulnérable sous Linux ?
+    Q4 : Pouvez-vous donner un exemple de processus d’exploitation d’une vulnérabilité d’injection SQL pour obtenir un accès administrateur à une base de données ?
+    Q5 : Expliquez comment vous procéderiez pour exploiter une vulnérabilité de type Local File Inclusion (LFI) dans une application web.
+
+3. Systèmes d’exploitation (Linux et Windows)
+
+    Q6 : Sur un système Linux, comment vérifier les permissions et identifier les fichiers ou services susceptibles d’être utilisés pour escalader les privilèges ?
+    Q7 : Comment détecter des points d'escalade de privilèges sous Windows ? Pouvez-vous donner un exemple d'exploitation d'une mauvaise configuration des services Windows pour obtenir des privilèges administratifs ?
+
+4. Scripting et Automatisation
+
+    Q8 : Pouvez-vous écrire un script simple en Bash ou en Python qui énumère tous les fichiers d'un répertoire et vérifie s'ils ont des permissions d'exécution sur un système Linux ? Expliquez également comment vous modifieriez ce script pour chercher des fichiers setuid.
+    Q9 : Si vous deviez automatiser l’exploitation d’une vulnérabilité trouvée sur un site web via Python, quel serait votre processus ? Quels modules ou bibliothèques Python utiliseriez-vous ?
+
+5. Méthodologie de Test d'Intrusion
+
+    Q10 : Pouvez-vous décrire la méthodologie complète d’un test d’intrusion, depuis la reconnaissance jusqu’à la post-exploitation ? Quels outils et techniques utiliseriez-vous à chaque étape ?
+    Q11 : Une fois que vous avez compromis un système, quelles sont les étapes que vous suivez pour maintenir l’accès sans être détecté ?
+
+6. Environnements de Laboratoire et Pratique
+
+    Q12 : Avez-vous déjà travaillé dans des environnements de type "Capture The Flag" (CTF) comme Hack The Box ou TryHackMe ? Si oui, combien de machines de difficulté intermédiaire à élevée avez-vous réussi à compromettre ?
+    Q13 : Avez-vous déjà réalisé des exercices de laboratoire tels que ceux proposés dans le programme de formation OSCP (PWK - Penetration Testing with Kali Linux) ? Si oui, combien de machines avez-vous résolues avec succès dans ces environnements ?
+
+
+    q1 : je sais pas je crois que syn est un type de requete web?
+    q2: nmap me semble pas mal nmap ip. je regarderai les ports ouvert et les services disponible. 
+

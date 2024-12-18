@@ -10,6 +10,7 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+#include <climits>
 
 class PmergeMe {
 private:
@@ -17,14 +18,13 @@ private:
     std::deque<int> _deq;
     
     // Vector operations
-    void mergeInsertSortVector(std::vector<int>& arr, size_t left, size_t right);
-    void insertSortVector(std::vector<int>& arr, size_t left, size_t right);
-    void mergeVector(std::vector<int>& arr, size_t left, size_t mid, size_t right);
+    void fordJohnsonSortVector(std::vector<int>& arr);
+    void insertElementVector(std::vector<int>& mainChain, int element, size_t position);
+    std::vector<size_t> generateJacobsthalNumbers(size_t n);
     
     // Deque operations
-    void mergeInsertSortDeque(std::deque<int>& arr, size_t left, size_t right);
-    void insertSortDeque(std::deque<int>& arr, size_t left, size_t right);
-    void mergeDeque(std::deque<int>& arr, size_t left, size_t mid, size_t right);
+    void fordJohnsonSortDeque(std::deque<int>& arr);
+    void insertElementDeque(std::deque<int>& mainChain, int element, size_t position);
 
     // Helper functions
     bool isNumber(const std::string& s) const;
