@@ -1,35 +1,46 @@
-#ifndef PMERGEME_HPP
-#define PMERGEME_HPP
+#ifndef PMERGE_ME_HPP
+#define PMERGE_ME_HPP
 
 #include <vector>
 #include <deque>
-#include <string>
-#include <ctime>
-#include <cstdlib>
 #include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <algorithm>
+#include <string>
+#include <cstdlib>
 #include <climits>
+#include <ctime>
 
 class PmergeMe {
 private:
     std::vector<int> _vec;
     std::deque<int> _deq;
-    
-    // Vector operations
-    void fordJohnsonSortVector(std::vector<int>& arr);
-    void insertElementVector(std::vector<int>& mainChain, int element, size_t position);
-    std::vector<size_t> generateJacobsthalNumbers(size_t n);
-    
-    // Deque operations
-    void fordJohnsonSortDeque(std::deque<int>& arr);
-    void insertElementDeque(std::deque<int>& mainChain, int element, size_t position);
 
-    // Helper functions
+    // Input validation
     bool isNumber(const std::string& s) const;
-    void displayContainer(const std::string& prefix, const std::vector<int>& container) const;
+    bool isValidNumber(const std::string& s) const;
     void validateNumbers(char** argv);
+
+    // Display helpers
+    void displayContainer(const std::string& prefix, const std::vector<int>& container) const;
+    void displayTimings(double vec_time, double deq_time) const;
+
+    // Utility functions
+    std::vector<size_t> generateJacobsthalNumbers(size_t n);
+
+    // Sorting helpers
+    template<typename Container>
+    void insertElement(Container& mainChain, int element, size_t position);
+
+    template<typename Container>
+    std::vector<std::pair<int, int> > createPairs(const Container& arr);
+
+    template<typename Container>
+    void mergePairs(Container& arr, const std::vector<std::pair<int, int> >& pairs, int odd_element);
+
+    template<typename Container>
+    void insertPendingElements(Container& arr, const std::vector<int>& pending);
+
+    void fordJohnsonSortVector(std::vector<int>& arr);
+    void fordJohnsonSortDeque(std::deque<int>& arr);
 
 public:
     PmergeMe();
