@@ -9,6 +9,14 @@
 #include <sstream>
 #include <climits>
 
+#define DEBUG 0
+#define LOG(msg) \
+    if (DEBUG) { \
+        std::cout << msg << std::endl; \
+    }
+
+
+
 class PmergeMe {
 public:
     std::vector<int> vec;

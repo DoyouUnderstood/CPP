@@ -103,16 +103,18 @@ void PmergeMe::insertElement(Container& mainChain, int element, size_t position)
     mainChain.insert(it, element);
 }
 
+
 template<typename Container>
 std::vector<std::pair<int, int> > PmergeMe::createPairs(const Container& arr) {
     std::vector<std::pair<int, int> > pairs;
     for (size_t i = 0; i < arr.size() - 1; i += 2) {
         int a = arr[i], b = arr[i + 1];
-        if (a > b) std::swap(a, b);
+        if (a > b) std::swap(a, b); // Tri de la paire
         pairs.push_back(std::make_pair(a, b));
     }
     return pairs;
 }
+
 
 template<typename Container>
 void PmergeMe::mergePairs(Container& arr, 
@@ -130,7 +132,7 @@ void PmergeMe::mergePairs(Container& arr,
     for (size_t i = 0; i < pairs.size(); ++i) {
         pending.push_back(pairs[i].first);
     }
-    if (odd_element != -1) {
+    if (odd_element != -1 && std::find(arr.begin(), arr.end(), odd_element) == arr.end()) {
         pending.push_back(odd_element);
     }
 
@@ -142,18 +144,27 @@ template<typename Container>
 void PmergeMe::insertPendingElements(Container& arr, const std::vector<int>& pending) {
     if (pending.empty()) return;
 
+    std::cout << "Inserting first element: " << pending[0] << std::endl;
     insertElement(arr, pending[0], arr.size());
+
     std::vector<size_t> jacobsthal = generateJacobsthalNumbers(pending.size());
+    std::cout << "Jacobsthal sequence: ";
+    for (size_t i = 0; i < jacobsthal.size(); ++i) {
+        std::cout << jacobsthal[i] << " ";
+    }
+    std::cout << std::endl;
 
     for (size_t i = 1; i < jacobsthal.size(); ++i) {
         for (size_t j = jacobsthal[i]; j > jacobsthal[i - 1]; --j) {
             if (j - 1 < pending.size()) {
+                std::cout << "Inserting element: " << pending[j - 1] << std::endl;
                 insertElement(arr, pending[j - 1], arr.size());
             }
         }
     }
 
     for (size_t i = jacobsthal.back() + 1; i <= pending.size(); ++i) {
+        std::cout << "Inserting remaining element: " << pending[i - 1] << std::endl;
         insertElement(arr, pending[i - 1], arr.size());
     }
 }

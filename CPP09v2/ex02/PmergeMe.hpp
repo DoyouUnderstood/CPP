@@ -1,6 +1,7 @@
 #ifndef PMERGE_ME_HPP
 #define PMERGE_ME_HPP
 
+#include <algorithm>
 #include <vector>
 #include <deque>
 #include <iostream>
